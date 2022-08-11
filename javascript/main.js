@@ -43,7 +43,7 @@ function filtrarProductos(){
         
         function comprarProducto (){
             let iva = 1.19
-            const filtrarProducto = productos.filter((el)=>el.nombre.includes(productoSeleccionado))
+            const filtrarProducto = productos.filter((el)=>el.nombre == productoSeleccionado)
             console.log(filtrarProducto)
             let {precio} = filtrarProducto[0];
             const precioFinal = precio * productoSeleccionadoCant * iva
