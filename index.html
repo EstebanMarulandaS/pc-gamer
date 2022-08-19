@@ -1,155 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC gamer store</title>
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="javascript/main.js"></script>
-    <script src="https://kit.fontawesome.com/0a266fd43a.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="sweet-modal/dist/min/jquery.sweet-modal.min.css" />
+    <title>PC-gamer store</title>
+    <script src="https://kit.fontawesome.com/0a266fd43a.js" crossorigin="anonymous"></script>
+    <script defer src="javascript/productos.js"></script>
+    <script defer src="javascript/script.js"></script>
+    <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-    <header class="header1">
-        <nav class="nav_bar">
-            <div class="main_grid_header"> 
-                <div class="logo"><a href=""><h1>PC gamer store</h1><i id="control_logo" class="fa-solid fa-gamepad"></i></a></div>
-                <div class="carrito_div"><a href=""><i class="fa-solid fa-bag-shopping fa-2x"></i></a></div>          
+<header class="header1">
+    <nav class="nav_bar">
+        <div class="main_grid_header"> 
+            <div class="logo"><a href=""><h1>PC gamer store</h1><i id="control_logo" class="fa-solid fa-gamepad"></i></a></div>
+            <div class="carrito_div"><i data-bs-toggle="modal" data-bs-target="#exampleModal" class="fa-solid fa-bag-shopping fa-2x"></i></div>          
+        </div>
+    </nav>
+</header>
+
+<main> 
+    <div class="main_index_img"><img src="https://www.rollingstone.com/wp-content/uploads/2020/04/Razer-Ornata-FI.jpg?resize=1800,1200&w=1800" class="img-fluid" alt="pc gamer setup">
+        <div class="bienvenidos_ver_productos_div">
+            <div class="bienvenidos_inner_div">Bienvenidos a PC gamer store</div>               
+            <div class="ver_producto_btn"> <a href="#milista"><button type="button" class="btn btn-danger">VER PRODUCTOS</button></a></div>
+        </div>
+    </div>
+     <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+        <div class="modal-body">
+        <!-- interior del carrito -->
+            <div>
+                <h4>Tu carrito:</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablabody"></tbody>
+                </table>
             </div>
+            
+        </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+</div>   
+   <!-- Listado de productos -->
+    <div>
+        <h2>Nuestros productos</h2>
+        <ul id="milista" class="row list-group list-group-horizontal"></ul>      
+    </div>
+    <!-- toTopBtn -->
+    <a href="#" class="to-top">
+        <i class="fas fa-chevron-up"></i>
+      </a>
+</main>
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+            
+        <h4>PC GAMER STORE</h4>           
+        <p>Siguenos en nuestras redes</p>             
+        <nav>
+            <ul class="social-media">
+
+                <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram-square"></i></a></li>
+                <li><a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-square"></i></a></li>   
+            
+            </ul>  
         </nav>
-    </header>
-
-    <main> 
-        <div class="main_index_img"><img src="https://www.rollingstone.com/wp-content/uploads/2020/04/Razer-Ornata-FI.jpg?resize=1800,1200&w=1800" class="img-fluid" alt="pc gamer setup">
-            <div class="bienvenidos_ver_productos_div">
-                <div class="bienvenidos_inner_div">Bienvenidos a PC gamer store</div>               
-                <div class="ver_producto_btn"> <a href="#contenedorProductos"><button type="button" class="btn btn-info">VER PRODUCTOS</button></a></div>
-            </div>
+        <div class="footer-bottom">
+            <p>copyright &copy;2022 PC GAMER STORE</p>
         </div>
-
-        <!-- Listado de productos -->
-        <!-- PC's containers  -->
-        <h2>PC's tope gama</h2>
-        
-        <div id="contenedorProductos" class="main_container_products">      
-            
-            <div class="main_img_container"><img src="../resources/top_pc_img/top_pc1.png" alt="pc_gamer_1">
-                
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-                
-            </div>
-            
-            <div class="main_img_container"><img src="../resources/top_pc_img/top_pc2.png" alt="pc_gamer_2"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div>
-            
-            <div class="main_img_container"><img src="../resources/top_pc_img/top_pc3.png" alt="pc_gamer_3"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div>
-            
-            <div class="main_img_container"><img src="../resources/top_pc_img/top_pc4.png" alt="pc_gamer_4"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div> 
-            
-            <div class="main_img_container"><img src="../resources/top_pc_img/top_pc5.png" alt="pc_gamer_5"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div> 
-            
-            <div class="main_img_container"><img src="../resources/top_pc_img/top_pc6.png" alt="pc_gamer_6"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div> 
-
-        </div>
-
-        <!-- accessories containers -->
-
-        <h2>Accesorios para pc</h2>
-        
-        <div class="main_container_products">      
-            
-            <div class="main_img_container"><img src="../resources/accesorios_pc/ram.png" alt="memory_ram">
-                
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-                
-            </div>
-            
-            <div class="main_img_container"><img src="../resources/accesorios_pc/refrigeración-líquida-de-circuito-abierto-edit.png" alt="cooling_system"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div>
-            
-            <div class="main_img_container"><img src="../resources/accesorios_pc/SSD.png" alt="ssd_memory"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div>
-            
-            <div class="main_img_container"><img src="../resources/accesorios_pc/rtx_3080.png" alt="GPU"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div> 
-            
-            <div class="main_img_container"><img src="../resources/accesorios_pc/monitor.png" alt="monitor"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div> 
-            
-            <div class="main_img_container"><img src="../resources/accesorios_pc/keyboard_mouse.png" alt="keyboard_mouse"> 
-            
-                <div class="anadir_div"><button class="anadir_btns">Añadir al carrito</button></div>
-                <div class="specs_div"><button class="specs_btns">Especificaciones</button></div>
-
-            </div> 
-        </div>   
-    </main>
-
-    <footer>
-        <div class="footer-content">
-                
-            <h4>PC GAMER STORE</h4>           
-            <p>Siguenos en nuestras redes</p>             
-            <nav>
-                <ul class="social-media">
-
-                    <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-                    <li><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                    <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram-square"></i></a></li>
-                    <li><a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
-                    <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-square"></i></a></li>   
-                
-                </ul>  
-            </nav>
-            <div class="footer-bottom">
-                <p>copyright &copy;2022 PC-monster</p>
-            </div>
-        </div>
-
-    </footer>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
