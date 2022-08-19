@@ -8,7 +8,7 @@ class Producto{
      
 }
 
-const productos = []
+const productos = []; 
 
 productos.push(new Producto("PC GAMER", 2000, "98741236", 100))
 productos.push(new Producto("TARJETA DE VIDEO", 1000, "23698514", 150))
