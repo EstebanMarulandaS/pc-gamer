@@ -1,19 +1,14 @@
 class Producto{
-    constructor(id,foto,nombre,precio){
+    constructor(id,foto,nombre,precio,precioFinal,cantidad){
         this.id = id
         this.foto = foto
         this.nombre = nombre
         this.precio = precio
+        this.precioFinal = precioFinal
+        this.cantidad = cantidad
+
     }
 }
-
-class ElementoCarrito{
-    constructor(producto,cantidad){
-        this.producto
-        this.cantidad
-    }
-}
-
 const productos =[]
 
 function cargarProductos(){
