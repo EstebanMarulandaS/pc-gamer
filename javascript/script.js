@@ -1,6 +1,8 @@
 let carrito = [];
 let lista = document.getElementById("milista");
 
+
+
 //llamada a renderizar
 renderizarProductos();
 
@@ -19,6 +21,23 @@ function renderizarProductos() {
         let btnAgregarAlCarrito = document.getElementById(`btn${producto.id}`)
         btnAgregarAlCarrito.addEventListener("click", function () {
             agregarAlCarrito(producto);
+            swal({
+                title: "Agregaste un producto al carrito!",
+                text: `${producto.nombre}`,
+                icon: "success",
+        
+                buttons: ["cerrar", "Ir al carrito"],
+            }).then((irACarrito) => {
+        
+                if (irACarrito) {
+                    //swal("Vamos al carrito!");
+                    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                    const modalToggle = document.getElementById('toggleMyModal');
+                    myModal.show(modalToggle);
+        
+                }
+            });
+
         });
     });   
 
@@ -90,10 +109,9 @@ function dibujarPrecioFinal() {
     }
 
 /* ------------------------------------------ */
-function agregarAlCarrito(producto) {
-
+function agregarAlCarrito(producto) {    
+    
     /* Funcion de orden superior para sweet alert */
-
     carrito.forEach((el) => {
         if (el.id == producto.id) {
             swal({
@@ -113,8 +131,9 @@ function agregarAlCarrito(producto) {
             });
             reset;
         }
+        
     })
-    
+
     /* Push de productos en el carrito */
     carrito.push(producto);
     /* Asignacion del valor a nuestra propiedad producto.cantidad */
@@ -155,6 +174,10 @@ function agregarAlCarrito(producto) {
         })
     })
 
+    /* Local Storage de los productos que agrego al carrito */
+
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+
     /* Boton eliminar producto */
 
     carrito.forEach((producto) => {
@@ -169,22 +192,7 @@ function agregarAlCarrito(producto) {
 
 
     /* Sweet alert */
-    swal({
-        title: "Agregaste un producto al carrito!",
-        text: `${producto.nombre}`,
-        icon: "success",
-
-        buttons: ["cerrar", "Ir al carrito"],
-    }).then((irACarrito) => {
-
-        if (irACarrito) {
-            //swal("Vamos al carrito!");
-            const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-            const modalToggle = document.getElementById('toggleMyModal');
-            myModal.show(modalToggle);
-
-        }
-    });
+    /*  */
 }
 
 /* ToTopBtn */
@@ -204,9 +212,19 @@ function eliminarProducto(producto) {
     carrito.length = 0;
     document.getElementById(`fila${producto.id}`).innerHTML = "";
     productoAconservar.forEach((productoAgregar) => carrito.push(productoAgregar))
-    if(carrito.length == 0){
-        document.getElementById("tablabody").innerHTML = ``;
-       
-    }
-
+    //Condicional ternario
+    carrito.length == 0 ? (document.getElementById("tablabody").innerHTML = ``) : ""
+        
+    
+    localStorage.setItem("carrito", JSON.stringify(carrito))
 }
+
+
+    /* Renderizacion de productos en el carrito guardados en el local storage */
+    let carritoDeStorage = JSON.parse(localStorage.getItem("carrito"))
+    //condicional ternario
+    localStorage.getItem("carrito") != null ?(carritoDeStorage.forEach((producto)=>{agregarAlCarrito(producto)})) : ""    
+    
+     /* --------------------------------------------------------------------------------------------------------------- */   
+        
+    
