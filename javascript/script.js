@@ -1,11 +1,9 @@
 let carrito = [];
 let lista = document.getElementById("milista");
 
-
-
 //llamada a renderizar
 renderizarProductos();
-
+/* --------------------------- */
 function renderizarProductos() {
     for (const producto of productos) {
         lista.innerHTML += `<li class="col-sm-3 list-group-item">
@@ -78,12 +76,12 @@ function dibujarPrecioFinal() {
         document.getElementById("tablaPrincipal").innerHTML="";
         
         }
-        /*Si el carrito no esta vacio dibuja los botones Cerrar Y finalizar compra  */
+        /*Si el carrito no esta vacio, dibuja los botones Cerrar Y finalizar compra  */
         else if(carrito!=0){
           document.querySelector("#modal-foot").innerHTML = `
           <div>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Finalizar compra</button>
+              <a href="/pages/confirmacion-de-compra.html"><button class="btn btn-primary">Finalizar compra</button></a>
   
           </div>
           `;
@@ -107,7 +105,7 @@ function dibujarPrecioFinal() {
          
 
     }
-
+ 
 /* ------------------------------------------ */
 function agregarAlCarrito(producto) {    
     
@@ -139,6 +137,7 @@ function agregarAlCarrito(producto) {
     /* Asignacion del valor a nuestra propiedad producto.cantidad */
     producto.cantidad = 1;
 
+   
     //agrego una fila nueva a la tabla body
     document.getElementById("tablabody").innerHTML += `
         <tr id="fila${producto.id}">
@@ -146,7 +145,7 @@ function agregarAlCarrito(producto) {
             <td>${producto.nombre}</td>
             <td><input type="number" id="cantidad-producto-${producto.id}" value = "${producto.cantidad}"min="1" max="1000" style="width: 50px;"></input></td>
             <td id="valorActual${producto.id}">${producto.precio}</td>
-            <td><button id="eliminar-producto-${producto.id}" type="button" class="btn btn-outline-danger">Eliminar</button></td>             
+            <td id="div-btn-eliminar"><button class="btn_eliminar" id="eliminar-producto-${producto.id}" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 10px; class="btn btn-outline-danger" ><i class="fa-solid fa-trash fa-lg"></i></i></button></td>             
         </tr>
     `;
 
@@ -189,10 +188,6 @@ function agregarAlCarrito(producto) {
 
         })
     })
-
-
-    /* Sweet alert */
-    /*  */
 }
 
 /* ToTopBtn */

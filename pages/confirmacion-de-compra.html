@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="sweet-modal/dist/min/jquery.sweet-modal.min.css"/>
+    <title>PC-gamer store</title>
+    <script src="https://kit.fontawesome.com/0a266fd43a.js" crossorigin="anonymous"></script>
+    <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script defer src="/javascript/confirmacion-de-compra.js"></script>
+    <script defer src="javascript/script.js"></script>
+    <script defer src="/javascript/productos.js"></script>
+    
+  </head>
+  <body>
+    <header>
+      <nav class="nav_bar">
+        <div class="main_grid_header">
+          <div class="logo">
+            <a href="/index.html"
+              ><h1>PC gamer store</h1>
+              <i id="control_logo" class="fa-solid fa-gamepad"></i
+            ></a>
+          </div>
+          <div id="carrito_icon" class="carrito_div">
+            <i
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              class="fa-solid fa-bag-shopping fa-2x"
+            ></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container-fluid">
+        <h2>Datos de facturacion</h2>
+        <div class="row">
+            <!-- Resumen de la compra -->
+            <div class="col-6">
+                <h2>Productos seleccionados</h2>
+                <table  class="table table-striped">
+                  <tbody id="tbody"></tbody>
+                  <tfoot id="tfoot"></tfoot>
+              </table>
+            </div>
+          <!-- Datos Personales De la compra -->
+          <div class="col-6">
+            <form class="row g-3 m-1 p-5">
+                <h2>datos personales</h2>  
+              <div class="col-md-4">
+                <label for="validationDefault01" class="form-label"
+                  >Nombre</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationDefault01"
+                  value=""
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="validationDefault02" class="form-label"
+                  >Apellido</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationDefault02"
+                  value=""
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label
+                  for="validationDefaultUsername"
+                  class="form-label"
+                  required
+                  >Nombre de usuario</label
+                >
+                <div class="input-group">
+                  <span class="input-group-text" id="inputGroupPrepend2"
+                    >@</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationDefaultUsername"
+                    aria-describedby="inputGroupPrepend2"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault03" class="form-label"
+                  >Ciudad</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationDefault03"
+                  required
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="validationDefault04" class="form-label"
+                  >Estado/Dpt</label
+                >
+                <select class="form-select" id="validationDefault04" required>
+                  <option selected disabled value="">Seleciona...</option>
+                  <option>Caldas</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="validationDefault05" class="form-label"
+                  >Direccion</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationDefault05"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="invalidCheck2"
+                    required
+                  />
+                  <label class="form-check-label" for="invalidCheck2">
+                    Acepto terminos y condiciones
+                  </label>
+                </div>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-primary" type="submit">
+                  Confirmar compra
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <h4>PC GAMER STORE</h4>
+        <p>Siguenos en nuestras redes</p>
+        <nav>
+          <ul class="social-media">
+            <li>
+              <a href="https://www.facebook.com" target="_blank"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://www.twitter.com" target="_blank"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com" target="_blank"
+                ><i class="fa-brands fa-instagram-square"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com" target="_blank"
+                ><i class="fa-brands fa-youtube"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/" target="_blank"
+                ><i class="fa-brands fa-linkedin-square"></i
+              ></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="footer-bottom">
+          <p>copyright &copy;2022 PC GAMER STORE</p>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

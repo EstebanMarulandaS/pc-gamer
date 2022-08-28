@@ -71,6 +71,56 @@ h2 {
   margin-top: 25px;
 }
 
+/* Trash can icon */
+#div-btn-eliminar .btn_eliminar {
+  background-color: transparent;
+}
+#div-btn-eliminar button {
+  cursor: pointer;
+  background-color: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: none;
+}
+#div-btn-eliminar button .fa-trash {
+  margin-right: 20px;
+}
+#div-btn-eliminar button:hover {
+  transition: all 0.4s;
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 2px 1px rgba(186, 17, 17, 0.2);
+  border-radius: 50%;
+}
+
+/* Carrito icon */
+#carrito_icon .fa-bag-shopping:hover {
+  transition: all 0.4s;
+  box-shadow: 5px 5px 5px 5px rgba(229, 17, 17, 0.2);
+  border-radius: 5%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.logo:hover {
+  transition: all 0.4s;
+  box-shadow: 5px 5px 5px 5px rgba(229, 17, 17, 0.2);
+  border-radius: 5%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .main_index_img {
   width: 100%;
   height: -webkit-fit-content;
