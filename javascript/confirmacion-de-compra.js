@@ -23,7 +23,6 @@ if(carritoDeStorage != null){
         </tr>
         
         `
-        debugger
         /* modifico dinamicamente el total del producto que agregue */
         let valorInput = document.getElementById(`cantidad-producto-${producto.id}`);
         valorInput.addEventListener("change", () => {
@@ -37,8 +36,13 @@ if(carritoDeStorage != null){
         })
 
     });
-   
+    document.getElementById("tfoot").innerHTML+=`
+        
+        precio total:${nuevoPreciod}
+        
+        `
 
 }
+
 
 

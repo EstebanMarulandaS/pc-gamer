@@ -1,14 +1,30 @@
-let carrito = [];
-let lista = document.getElementById("milista");
+let carrito = []
+let valorActualDolar=0
+let lista = document.getElementById("milista")
 
+/* consumimos API de Dolar */
+await obtenerValorDolar().then(a=>{valorActualDolar=a
+})
+
+async function obtenerValorDolar(){
+    const apiDeDolar = "https://s3.amazonaws.com/dolartoday/data.json"
+    const resp = await fetch(apiDeDolar)
+    const factorDolar = await resp.json()
+    return factorDolar.USDCOL.ratecash
+}
+
+console.log(valorActualDolar)
+ 
 //llamada a renderizar
 renderizarProductos();
+
 /* --------------------------- */
-function renderizarProductos() {
+  function renderizarProductos() {
     for (const producto of productos) {
         lista.innerHTML += `<li class="col-sm-3 list-group-item">
             <h2>${producto.nombre}</h2>
-            <h4><strong> $ ${producto.precio} </strong></h4>
+            <h4><strong> $ ${producto.precio} USD </strong></h4>
+            <h4><strong> $ ${producto.precio*valorActualDolar} COP </strong></h4>
             <img src=${producto.foto} width="300" height="fit-content">
             <button class='btn btn-secondary' id='btn${producto.id}'>Comprar</button>
         </li>`;
@@ -52,6 +68,15 @@ function calculcarPrecioFinalCarrito() {
     return totalCarritoCompra
 }
 
+/* calculamos precio final en COP */
+function calculcarPrecioFinalCarritoCOP() {
+    let totalCarritoCompra = 0;
+    carrito.forEach((producto) => {
+        totalCarritoCompra += producto.precioFinal * valorActualDolar
+    })
+    return totalCarritoCompra
+}
+
 /* Funcion para dibujar el tfoot con el precio final */
 function dibujarPrecioFinal() {
     document.getElementById("tablafoot").innerHTML = `
@@ -62,9 +87,13 @@ function dibujarPrecioFinal() {
                </td>
    
                <td>
-                   ${calculcarPrecioFinalCarrito()}
+                   ${calculcarPrecioFinalCarrito()} USD
                </td>
-   
+
+               <td>
+                   ${calculcarPrecioFinalCarritoCOP()} COP
+               </td>
+    
            </tr>
        </tfoot>
       
@@ -91,7 +120,8 @@ function dibujarPrecioFinal() {
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col">Total</th>
+                <th scope="col">Total USD</th>
+                <th scope="col">Total COP</th>
             </tr>     
           `;     
           
@@ -145,6 +175,7 @@ function agregarAlCarrito(producto) {
             <td>${producto.nombre}</td>
             <td><input type="number" id="cantidad-producto-${producto.id}" value = "${producto.cantidad}"min="1" max="1000" style="width: 50px;"></input></td>
             <td id="valorActual${producto.id}">${producto.precio}</td>
+            <td id="valorActualCOP${producto.id}">${producto.precio * valorActualDolar}</td>
             <td id="div-btn-eliminar"><button class="btn_eliminar" id="eliminar-producto-${producto.id}" style="--bs-btn-padding-y: 10px; --bs-btn-padding-x: 10px; class="btn btn-outline-danger" ><i class="fa-solid fa-trash fa-lg"></i></i></button></td>             
         </tr>
     `;
@@ -152,6 +183,10 @@ function agregarAlCarrito(producto) {
     /*Asignacion del valor a la propiedad producto.precio final  */
 
     producto.precioFinal = producto.precio * producto.cantidad
+      
+    /*Asignacion del valor a la propiedad producto.precio final EN COP  */
+
+      producto.precioFinalCOP = producto.precio * producto.cantidad * valorActualDolar
     
     /* Funcion que dibuja el precio final al primer click */
     dibujarPrecioFinal()
@@ -167,6 +202,14 @@ function agregarAlCarrito(producto) {
             producto.precioFinal = nuevoPrecio
             document.getElementById(`valorActual${producto.id}`).innerHTML = `
         <td id="cantidad-producto-${producto.id}">${nuevoPrecio}</td>
+    `
+    /* Calculo precio individual total en COP */
+
+    let nuevoPrecioCOP = producto.precio * valorInput.value * valorActualDolar
+    console.log(nuevoPrecioCOP)
+            producto.precioFinalCOP = nuevoPrecioCOP
+            document.getElementById(`valorActualCOP${producto.id}`).innerHTML = `
+        <td id="cantidad-producto-${producto.id}">${nuevoPrecioCOP}</td>
     `
             dibujarPrecioFinal()
 
@@ -218,8 +261,17 @@ function eliminarProducto(producto) {
     /* Renderizacion de productos en el carrito guardados en el local storage */
     let carritoDeStorage = JSON.parse(localStorage.getItem("carrito"))
     //condicional ternario
-    localStorage.getItem("carrito") != null ?(carritoDeStorage.forEach((producto)=>{agregarAlCarrito(producto)})) : ""    
+    carritoDeStorage != null ?(carritoDeStorage.forEach((producto)=>{agregarAlCarrito(producto)})) : "" 
+
     
-     /* --------------------------------------------------------------------------------------------------------------- */   
+
+
+  
+
+   
+
+
+
+
+
         
-    

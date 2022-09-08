@@ -1,0 +1,7 @@
+const apiDeProductos = JSON.stringify
+(productos)
+console.log(apiDeProductos)   
+
+const objeto = JSON.parse(apiDeProductos)
+
+
