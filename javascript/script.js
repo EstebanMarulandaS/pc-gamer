@@ -12,8 +12,6 @@ async function obtenerValorDolar(){
     const factorDolar = await resp.json()
     return factorDolar.USDCOL.ratecash
 }
-
-console.log(valorActualDolar)
  
 //llamada a renderizar
 renderizarProductos();
@@ -260,10 +258,9 @@ function eliminarProducto(producto) {
 
     /* Renderizacion de productos en el carrito guardados en el local storage */
     let carritoDeStorage = JSON.parse(localStorage.getItem("carrito"))
-    //condicional ternario
     carritoDeStorage != null ?(carritoDeStorage.forEach((producto)=>{agregarAlCarrito(producto)})) : "" 
+    //condicional ternario
 
-    
 
 
   
@@ -274,4 +271,3 @@ function eliminarProducto(producto) {
 
 
 
-        
