@@ -6,12 +6,23 @@ let lista = document.getElementById("milista")
 await obtenerValorDolar().then(a=>{valorActualDolar=a
 })
 
-async function obtenerValorDolar(){
-    const apiDeDolar = "https://s3.amazonaws.com/dolartoday/data.json"
-    const resp = await fetch(apiDeDolar)
-    const factorDolar = await resp.json()
-    return factorDolar.USDCOL.ratecash
+async function obtenerValorDolar() {
+    const apiDeDolar = "https://trm-colombia.vercel.app/?date=2024-04-09";
+    try {
+        const resp = await fetch(apiDeDolar);
+        if (!resp.ok) {
+            throw new Error("Error al obtener los datos del dólar");
+        }
+        const factorDolar = await resp.json();
+        return factorDolar.data.value
+        
+    } catch (error) {
+        console.error("Error al obtener el valor del dólar:", error);
+    
+        return null; 
+    }
 }
+
  
 //llamada a renderizar
 renderizarProductos();
